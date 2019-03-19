@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Baymax.Control
 {
+    //test
     public class Class1
     {
     }
