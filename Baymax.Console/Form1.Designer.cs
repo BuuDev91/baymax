@@ -8,7 +8,6 @@ namespace Baymax.Console
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -32,11 +31,11 @@ namespace Baymax.Console
         private void InitializeComponent()
         {
             this.consoleView1 = new Baymax.View.ConsoleView();
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.SuspendLayout();
             // 
             // consoleView1
             // 
+            this.consoleView1.Console = null;
             this.consoleView1.Location = new System.Drawing.Point(40, 54);
             this.consoleView1.Name = "consoleView1";
             this.consoleView1.Size = new System.Drawing.Size(472, 109);
@@ -49,7 +48,6 @@ namespace Baymax.Console
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(827, 358);
             this.Controls.Add(this.consoleView1);
-            this.Menu = this.mainMenu1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
