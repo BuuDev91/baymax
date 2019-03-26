@@ -5,12 +5,14 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using Baymax.Control;
 
 namespace Baymax.View
 {
     public partial class SwitchView : UserControl
     {
         private bool switchState;
+        private Switch _switch;
 
         public SwitchView()
         {
@@ -28,6 +30,28 @@ namespace Baymax.View
                 this.switchState = value;
                 this.switchImage.Image = value ? Resource.SwitchOn: Resource.SwitchOff;
             }
+        }
+
+        public Switch Switch
+        {
+            get
+            {
+                return this._switch;
+            }
+            set
+            {
+                this._switch = value;
+                if (this._switch == null)
+                {
+                    return;
+                }
+                this._switch.SwitchStateChanged += this.OnSwitchStateChanged;
+            }
+        }
+
+        private void OnSwitchStateChanged(object sender, SwitchEventArgs e)
+        {
+            this.State = e.SwitchEnabled;
         }
     }
     

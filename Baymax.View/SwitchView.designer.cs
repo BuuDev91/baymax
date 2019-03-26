@@ -27,12 +27,14 @@ namespace Baymax.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwitchView));
             this.switchImage = new System.Windows.Forms.PictureBox();
             this.SuspendLayout();
             // 
             // switchImage
             // 
             this.switchImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.switchImage.Image = ((System.Drawing.Image)(resources.GetObject("switchImage.Image")));
             this.switchImage.Location = new System.Drawing.Point(0, 0);
             this.switchImage.Name = "switchImage";
             this.switchImage.Size = new System.Drawing.Size(53, 67);

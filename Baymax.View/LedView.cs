@@ -12,6 +12,7 @@ namespace Baymax.View
     public partial class LedView : UserControl
     {
         private bool state;
+        private Led led;
 
         public LedView()
         {
@@ -31,6 +32,33 @@ namespace Baymax.View
             }
         }
 
-        public Led Led { get; set; }
+        public Led Led
+        {
+            get
+            {
+                return this.led;
+            }
+            set
+            {
+                if (this.led != null)
+                {
+                    this.led.LedStateChanged -= this.LedsStateChanged;
+                }
+
+                this.led = value;
+
+                if (this.led == null)
+                {
+                    return;
+                }
+
+                this.led.LedStateChanged += this.LedsStateChanged;
+            }
+        }
+
+        private void LedsStateChanged(object sender, LedEventArgs e)
+        {
+            this.State = e.LedEnabled;
+        }
     }
 }
