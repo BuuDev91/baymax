@@ -19,7 +19,7 @@ namespace Baymax.Console
 
             Control.RobotConsole rc = this.consoleView1.Console;
 
-            rc[Switches.Switch1].SwitchStateChanged += (s, e) => { rc[Leds.Led1].LedEnabled = rc[Switches.Switch1].SwitchEnabled; };
+            rc[Switches.Switch1].SwitchStateChanged += (s, e) => { rc[Leds.Led1].LedEnabled = e.SwitchEnabled; };
             rc[Switches.Switch2].SwitchStateChanged += (s, e) => { rc[Leds.Led2].LedEnabled = rc[Switches.Switch2].SwitchEnabled; };
             rc[Switches.Switch3].SwitchStateChanged += (s, e) => { rc[Leds.Led3].LedEnabled = rc[Switches.Switch3].SwitchEnabled; };
             rc[Switches.Switch4].SwitchStateChanged += (s, e) => { rc[Leds.Led4].LedEnabled = rc[Switches.Switch4].SwitchEnabled; };

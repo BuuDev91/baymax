@@ -51,7 +51,14 @@ namespace Baymax.View
 
         private void OnSwitchStateChanged(object sender, SwitchEventArgs e)
         {
-            this.State = e.SwitchEnabled;
+            if (this.InvokeRequired)
+            {
+                Invoke(new EventHandler<SwitchEventArgs>(OnSwitchStateChanged), sender, e);
+            }
+            else
+            {
+                this.State = e.SwitchEnabled;
+            }
         }
     }
     

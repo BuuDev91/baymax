@@ -69,7 +69,7 @@ namespace Baymax.Control
         /// </summary>
         public int Data
         {
-            get { return 0; /* ToDo */}
+            get { return IOPort.Read(this.Port); }
         }
         #endregion
 
@@ -95,7 +95,7 @@ namespace Baymax.Control
         /// <returns>den Zustand des entsprechenden Input-Bits.</returns>
         public virtual bool this[int bit]
         {
-            get { return false; /* ToDo */ }
+            get { return System.Convert.ToBoolean((this.Data & (1 << bit)) >> bit); }
         }
 
         /// <summary>
@@ -112,6 +112,14 @@ namespace Baymax.Control
                 // Todo: Port des Roboters pollen.
                 // Falls eine Änderung detektiert wird, das Event DigitalInChanged feuern.
 
+                newData = this.Data;
+
+                if (newData != oldData)
+                {
+                    oldData = newData;
+                    
+                    this.OnDigitalInChanged(EventArgs.Empty);
+                }
 
                 Thread.Sleep(50);
             }

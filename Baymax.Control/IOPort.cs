@@ -35,7 +35,7 @@ namespace Baymax.Control
         {
             try
             {
-                Assembly a = Assembly.LoadFrom("RobotIO.dll");
+                Assembly a = Assembly.LoadFrom("Baymax.IO.dll");
                 Type[] t = a.GetTypes();
                 writeMethod = t[3].GetMethod("Write", BindingFlags.Public | BindingFlags.Static);
                 readMethod = t[3].GetMethod("Read", BindingFlags.Public | BindingFlags.Static);

@@ -58,7 +58,14 @@ namespace Baymax.View
 
         private void LedsStateChanged(object sender, LedEventArgs e)
         {
-            this.State = e.LedEnabled;
+            if (this.InvokeRequired)
+            {
+                Invoke(new EventHandler<LedEventArgs>(LedsStateChanged), sender, e);
+            }
+            else
+            {
+                this.State = e.LedEnabled;
+            }
         }
     }
 }

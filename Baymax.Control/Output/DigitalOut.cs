@@ -54,8 +54,13 @@ namespace Baymax.Control
         {
             get { return data; }
             set 
-            { 
-                // Todo 
+            {
+                if (data != value)
+                {
+                    data = value;
+                    IOPort.Write(Port, value);
+                    OnDigitalOutputChanged(EventArgs.Empty);
+                }
             }
         }
         #endregion
@@ -83,8 +88,18 @@ namespace Baymax.Control
         /// <returns>den aktuellen Zustand des Bits</returns>
         public virtual bool this[int bit]
         {
-            get { return false; /* ToDo */  }
-            set { /* ToDo */ }
+            get { return System.Convert.ToBoolean((this.Data & (1 << bit)) >> bit);  }
+            set
+            {
+                if (value)
+                {
+                    Data = Data | (1 << bit);
+                }
+                else
+                {
+                    this.Data = Data & ~ (1 << bit);
+                }
+            }
         }
         #endregion
     }
