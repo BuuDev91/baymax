@@ -39,7 +39,7 @@ namespace Baymax.Console
             // 
             this.consoleView1.Location = new System.Drawing.Point(40, 54);
             this.consoleView1.Name = "consoleView1";
-            this.consoleView1.Size = new System.Drawing.Size(750, 192);
+            this.consoleView1.Size = new System.Drawing.Size(472, 109);
             this.consoleView1.TabIndex = 0;
             // 
             // Form1
@@ -47,7 +47,7 @@ namespace Baymax.Console
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(872, 483);
+            this.ClientSize = new System.Drawing.Size(827, 358);
             this.Controls.Add(this.consoleView1);
             this.Menu = this.mainMenu1;
             this.Name = "Form1";
