@@ -109,7 +109,6 @@ namespace Baymax.Control
             run = true;
             while (run)
             {
-                // Todo: Port des Roboters pollen.
                 // Falls eine Änderung detektiert wird, das Event DigitalInChanged feuern.
 
                 newData = this.Data;

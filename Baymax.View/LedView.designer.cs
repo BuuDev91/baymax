@@ -27,20 +27,19 @@ namespace Baymax.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LedView));
             this.ledImage = new System.Windows.Forms.PictureBox();
             this.SuspendLayout();
             // 
             // ledImage
             // 
-            this.ledImage.Image = ((System.Drawing.Image)(resources.GetObject("ledImage.Image")));
+            this.ledImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ledImage.Location = new System.Drawing.Point(0, 0);
             this.ledImage.Name = "ledImage";
-            this.ledImage.Size = new System.Drawing.Size(16, 16);
+            this.ledImage.Size = new System.Drawing.Size(20, 20);
             // 
             // LedView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.ledImage);
             this.Name = "LedView";

@@ -1,0 +1,25 @@
+﻿using Baymax.Control;
+using Baymax.View;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Baymax.TestMotor
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+
+            this.driveCtrlView.DriveCtrl = new DriveCtrl(Constants.IODriveCtrl);
+            this.motorCtrlView1.MotorCtrl = new MotorCtrl(Constants.IOMotorCtrlRight);
+            this.motorCtrlView2.MotorCtrl = new MotorCtrl(Constants.IOMotorCtrlLeft);
+        }
+    }
+}
