@@ -151,7 +151,6 @@ namespace Baymax.Control
             }
         }
 
-
         /// <summary>
         /// Liefert den gefahrenden Weg [m].
         /// Dieser wird aus der Anzahl Ticks berechnet.
@@ -160,7 +159,7 @@ namespace Baymax.Control
         {
             get
             {
-                return IOPort.Read(ioAddress) * Constants.MeterPerTick;
+                return Ticks * Constants.MeterPerTick;
             }
         }
 

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baymax.View", "Baymax.View\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baymax.TestMotor", "Baymax.TestMotor\Baymax.TestMotor.csproj", "{0AC703FF-545D-401C-819D-1B407A1CA9E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baymax.TestDrive", "Baymax.TestDrive\Baymax.TestDrive.csproj", "{D7263E24-8F2C-4B38-9C27-26F043D1121F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,12 @@ Global
 		{0AC703FF-545D-401C-819D-1B407A1CA9E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AC703FF-545D-401C-819D-1B407A1CA9E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0AC703FF-545D-401C-819D-1B407A1CA9E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D7263E24-8F2C-4B38-9C27-26F043D1121F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7263E24-8F2C-4B38-9C27-26F043D1121F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7263E24-8F2C-4B38-9C27-26F043D1121F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D7263E24-8F2C-4B38-9C27-26F043D1121F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7263E24-8F2C-4B38-9C27-26F043D1121F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7263E24-8F2C-4B38-9C27-26F043D1121F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
