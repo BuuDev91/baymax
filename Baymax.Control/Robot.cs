@@ -17,14 +17,15 @@ namespace Baymax.Control
         #region members
         private RobotConsole robotConsole;
         private Drive drive;
+        private Radar radar;
         #endregion
 
 
         #region constructor & destructor
         public Robot()
         {
-
             this.robotConsole = new RobotConsole();
+            this.radar = new Radar(Constants.IORadarSensor);
             this.drive = new Drive();
         }
 
@@ -56,6 +57,11 @@ namespace Baymax.Control
         public Drive Drive
         {
             get { return this.drive; }
+        }
+
+        public Radar Radar
+        {
+            get { return this.radar; }
         }
 
 

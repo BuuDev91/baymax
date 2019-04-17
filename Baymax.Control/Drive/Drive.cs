@@ -25,8 +25,8 @@ namespace Baymax.Control
         private MotorCtrl motorCtrlLeft;
         private MotorCtrl motorCtrlRight;
         private Thread thread;
-
-        private Track track;
+        public List<Track> tracks;
+        public event EventHandler<TrackCompletedEventArgs> tracksCompleted;
         
         private Object infoLock = new object();
         private Object drivesLock = new object();
@@ -50,6 +50,7 @@ namespace Baymax.Control
         /// <param name="runMode">der gewünschte Run-Mode (Real/Virtual)</param>
         public Drive()
         {
+            this.tracks = new List<Track>();
             this.disposed = false;
 
             // Antrieb initialisieren
@@ -130,7 +131,7 @@ namespace Baymax.Control
         }
 
 
-        public bool Done { get { return track == null; } }
+        public bool Done { get { return tracks.Count == 0; } }
         #endregion
 
 
@@ -149,7 +150,7 @@ namespace Baymax.Control
         public void RunLine(float length, float speed, float acceleration)
         {
             if (disposed) throw new ObjectDisposedException("Drive");
-            if (track == null) track = new TrackLine(length, speed, acceleration);
+            tracks.Add(new TrackLine(length, speed, acceleration));
         }
 
 
@@ -167,7 +168,7 @@ namespace Baymax.Control
         public void RunTurn(float angle, float speed, float acceleration)
         {
             if (disposed) throw new ObjectDisposedException("Drive");
-            if (track == null) track = new TrackTurn(angle, speed, acceleration);
+            tracks.Add(new TrackTurn(angle, speed, acceleration));
         }
 
 
@@ -186,7 +187,7 @@ namespace Baymax.Control
         public void RunArcLeft(float radius, float angle, float speed, float acceleration)
         {
             if (disposed) throw new ObjectDisposedException("Drive");
-            if (track == null) track = new TrackArcLeft(radius, angle, speed, acceleration);
+            tracks.Add(new TrackArcLeft(radius, angle, speed, acceleration));
         }
 
 
@@ -205,7 +206,7 @@ namespace Baymax.Control
         public void RunArcRight(float radius, float angle, float speed, float acceleration)
         {
             if (disposed) throw new ObjectDisposedException("Drive");
-            if (track == null) track = new TrackArcRight(radius, angle, speed, acceleration);
+            tracks.Add(new TrackArcRight(radius, angle, speed, acceleration));
         }
         #endregion
 
@@ -255,10 +256,12 @@ namespace Baymax.Control
             while (run)
             {
                 Thread.Sleep(1);    // Möglichst schneller Process Control Loop
+                Track track = null;
+                if (!Done) track = tracks[0];
 
                 if (stop)
                 {
-                    this.track = null;
+                    this.tracks.Clear();
                     stop = false;
                     velocity = 0; // Joc 10.04.2010
                 }
@@ -292,8 +295,12 @@ namespace Baymax.Control
                 {
                     if ((track.Done) || ((halt && (velocity == 0))))
                     {
-                        track = null;
+                        tracks.RemoveAt(0);
                         halt = false;
+                        if (Done)
+                        {
+                            tracksCompleted?.Invoke(this, new TrackCompletedEventArgs(0));
+                        }
                     }
                     else if (track.ResidualLength > 0)
                     {
@@ -348,6 +355,7 @@ namespace Baymax.Control
                     }
                     else
                     {
+                        tracks.RemoveAt(0);
                         track = null;
                     }
                 }
@@ -395,7 +403,7 @@ namespace Baymax.Control
 					info.DistanceL = -motorCtrlLeft.Distance;
 					info.DistanceR = motorCtrlRight.Distance;
 				}
-				if (track != null) info.Runtime = track.ElapsedTime;
+				if (!Done) info.Runtime = tracks[0].ElapsedTime;
 			}
 
 
